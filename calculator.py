@@ -45,7 +45,7 @@ def hourly():
         incent_d = 1
         global incent_pay
         incent_pay = 0
-        print("That's some free money that your company could be paying you, that you are missing out on.")
+        print("\nThat's some free money that your company could be paying you, that you are missing out on.")
     else: print('That is not a [Y]es or [N]o')
 
 def math_h():
@@ -100,10 +100,19 @@ def math_s():
     elif s_even == 'n':
         week_hours = s_week
     work_weeks = 52 - float(s_vweeks)
-    week_pay = format(round(float(s_year) / work_weeks, 2), '.2f')
+    six_day = 155
+    seven_day = 265
+    if s_days == "6":
+        week_pay = format(round((float(s_year) / work_weeks) + six_day, 2), '.2f')
+    elif s_days == "7":
+        week_pay = format(round((float(s_year) / work_weeks) + six_day + seven_day, 2), '.2f')
+    else:
+        week_pay = format(round(float(s_year) / work_weeks, 2), '.2f')
     month_pay = format(round(4 * float(week_pay), 2), '.2f')
     hour_pay = format(round(float(week_pay) / float(week_hours), 2), '.2f')
-    print('\nYou make $' + month_pay + ' per month.')
+    year_pay = format(round(float(week_pay) * work_weeks, 2), '.2f')
+    print('\nYou make $' + year_pay + ' per year.')
+    print('You make $' + month_pay + ' per month.')
     print('You make $' + week_pay + ' per week.')
     print('You make $' + hour_pay + ' per hour, without overtime.\n')
     
